@@ -9,12 +9,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.ArrayRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.ArrayRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.TypedValue;
@@ -274,13 +274,10 @@ public class MaterialCalendarView extends ViewGroup {
 
     titleChanger = new TitleChanger(title);
 
-    pager.setOnPageChangeListener(pageChangeListener);
-    pager.setPageTransformer(false, new ViewPager.PageTransformer() {
-      @Override
-      public void transformPage(View page, float position) {
-        position = (float) Math.sqrt(1 - Math.abs(position));
-        page.setAlpha(position);
-      }
+    pager.addOnPageChangeListener(pageChangeListener);
+    pager.setPageTransformer(false, (page, position) -> {
+      position = (float) Math.sqrt(1 - Math.abs(position));
+      page.setAlpha(position);
     });
 
     TypedArray a = context.getTheme()
@@ -1553,6 +1550,7 @@ public class MaterialCalendarView extends ViewGroup {
     //We need to disregard padding for a while. This will be added back later
     final int desiredWidth = specWidthSize - getPaddingLeft() - getPaddingRight();
     final int desiredHeight = specHeightSize - getPaddingTop() - getPaddingBottom();
+//    final int desiredHeight = 0;
 
     final int weekCount = getWeekCountBasedOnMode();
 
