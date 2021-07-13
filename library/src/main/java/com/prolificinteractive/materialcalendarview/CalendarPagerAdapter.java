@@ -402,7 +402,7 @@ abstract class CalendarPagerAdapter<V extends CalendarPagerView> extends PagerAd
 
     public void setDayOfWeekDrawableIconBottom(Map<DayOfWeek, Drawable> dayOfWeekDrawableIconBottom) {
         this.dayOfWeekDrawableIconBottom = dayOfWeekDrawableIconBottom;
-        notifyDataSetChanged();
-        invalidateSelectedDates();
+//        notifyDataSetChanged();
+//        invalidateSelectedDates();
     }
 }

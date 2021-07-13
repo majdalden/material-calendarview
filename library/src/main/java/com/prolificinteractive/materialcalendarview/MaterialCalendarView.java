@@ -896,7 +896,8 @@ public class MaterialCalendarView extends ViewGroup {
     public void setDayOfWeekDrawableIconBottom(Map<DayOfWeek, Drawable> dayOfWeekDrawableIconBottom) {
         this.dayOfWeekDrawableIconBottom = dayOfWeekDrawableIconBottom;
         adapter.setDayOfWeekDrawableIconBottom(dayOfWeekDrawableIconBottom);
-        updateUi();
+//        updateUi();
+        commit(state);
     }
 
     /**

@@ -85,12 +85,12 @@ class DayView extends AppCompatCheckedTextView {
         this.iconBottomDrawable = iconBottomDrawable;
 
         setCompoundDrawablePadding(12);
-        int padding = 6;
+        /*int padding = 6;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             setPaddingRelative(0, padding, 0, padding);
         } else {
             setPadding(0, padding, 0, padding);
-        }
+        }*/
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, iconBottomDrawable);
         } else {
