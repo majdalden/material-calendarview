@@ -1,19 +1,31 @@
 package com.prolificinteractive.materialcalendarview;
 
+import android.graphics.drawable.Drawable;
+
 import androidx.annotation.NonNull;
+
+import org.threeten.bp.DayOfWeek;
 import org.threeten.bp.Period;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Pager adapter backing the calendar view
  */
 class MonthPagerAdapter extends CalendarPagerAdapter<MonthView> {
 
+
   MonthPagerAdapter(MaterialCalendarView mcv) {
     super(mcv);
   }
 
+  MonthPagerAdapter(MaterialCalendarView mcv,Map<DayOfWeek, Drawable> dayOfWeekDrawableIconBottom) {
+    super(mcv,dayOfWeekDrawableIconBottom);
+  }
+
   @Override protected MonthView createView(int position) {
-    return new MonthView(mcv, getItem(position), mcv.getFirstDayOfWeek(), showWeekDays);
+    return new MonthView(mcv, getItem(position), mcv.getFirstDayOfWeek(), showWeekDays,getDayOfWeekDrawableIconBottom());
   }
 
   @Override protected int indexOf(MonthView view) {

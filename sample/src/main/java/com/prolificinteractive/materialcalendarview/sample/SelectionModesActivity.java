@@ -1,9 +1,12 @@
 package com.prolificinteractive.materialcalendarview.sample;
 
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.transition.TransitionManager;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -16,7 +19,12 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.OnRangeSelectedListener;
 import com.prolificinteractive.materialcalendarview.sample.decorators.RangeDayDecorator;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.threeten.bp.DayOfWeek;
 import org.threeten.bp.format.DateTimeFormatter;
 
 /**
@@ -51,6 +59,14 @@ public class SelectionModesActivity extends AppCompatActivity
     range.setOnRangeSelectedListener(this);
     range.addDecorator(decorator);
     none.setOnDateChangedListener(this);
+
+    Drawable drawable = ContextCompat.getDrawable(
+            SelectionModesActivity.this,
+            R.drawable.ic_dumbbells_8dp_16dp
+    );
+    Map<DayOfWeek, Drawable> dayOfWeekDrawableIconBottom = new HashMap<>();
+    dayOfWeekDrawableIconBottom.put(DayOfWeek.FRIDAY,drawable);
+    single.setDayOfWeekDrawableIconBottom(dayOfWeekDrawableIconBottom);
   }
 
   @Override public void onDateSelected(
