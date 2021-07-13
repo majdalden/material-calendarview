@@ -13,14 +13,13 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatCheckedTextView;
-
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.view.Gravity;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatCheckedTextView;
 
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView.ShowOtherDates;
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
@@ -232,10 +231,10 @@ class DayView extends AppCompatCheckedTextView {
 
     private void regenerateBackground() {
         if (selectionDrawable != null) {
-            setBackgroundDrawable(selectionDrawable);
+            setBackground(selectionDrawable);
         } else {
             mCircleDrawable = generateBackground(selectionColor, fadeTime, circleDrawableRect);
-            setBackgroundDrawable(mCircleDrawable);
+            setBackground(mCircleDrawable);
         }
     }
 
