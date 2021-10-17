@@ -1,5 +1,9 @@
 package com.prolificinteractive.materialcalendarview;
 
+import static com.prolificinteractive.materialcalendarview.MaterialCalendarView.showDecoratedDisabled;
+import static com.prolificinteractive.materialcalendarview.MaterialCalendarView.showOtherMonths;
+import static com.prolificinteractive.materialcalendarview.MaterialCalendarView.showOutOfRange;
+
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -25,10 +29,6 @@ import com.prolificinteractive.materialcalendarview.MaterialCalendarView.ShowOth
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 
 import java.util.List;
-
-import static com.prolificinteractive.materialcalendarview.MaterialCalendarView.showDecoratedDisabled;
-import static com.prolificinteractive.materialcalendarview.MaterialCalendarView.showOtherMonths;
-import static com.prolificinteractive.materialcalendarview.MaterialCalendarView.showOutOfRange;
 
 /**
  * Display one day of a {@linkplain MaterialCalendarView}
@@ -91,9 +91,9 @@ class DayView extends AppCompatCheckedTextView {
             setPadding(0, padding, 0, padding);
         }*/
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, iconBottomDrawable);
+            setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, this.iconBottomDrawable);
         } else {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, null, iconBottomDrawable);
+            setCompoundDrawablesWithIntrinsicBounds(null, null, null, this.iconBottomDrawable);
         }
     }
 

@@ -9,14 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import androidx.annotation.ArrayRes;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.viewpager.widget.ViewPager;
-
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.TypedValue;
@@ -30,11 +22,22 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ArrayRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
+
 import com.prolificinteractive.materialcalendarview.format.ArrayWeekDayFormatter;
 import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 import com.prolificinteractive.materialcalendarview.format.TitleFormatter;
 import com.prolificinteractive.materialcalendarview.format.WeekDayFormatter;
+
+import org.threeten.bp.DayOfWeek;
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.temporal.WeekFields;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -46,10 +49,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-
-import org.threeten.bp.DayOfWeek;
-import org.threeten.bp.LocalDate;
-import org.threeten.bp.temporal.WeekFields;
 
 /**
  * <p>
@@ -189,7 +188,7 @@ public class MaterialCalendarView extends ViewGroup {
     private final CalendarPager pager;
     private CalendarPagerAdapter<?> adapter;
     private CalendarDay currentMonth;
-    private LinearLayout topbar;
+    private final LinearLayout topbar;
     private CalendarMode calendarMode;
     /**
      * Used for the dynamic calendar height.
@@ -891,6 +890,13 @@ public class MaterialCalendarView extends ViewGroup {
         int index = adapter.getIndexForDay(day);
         pager.setCurrentItem(index, useSmoothScroll);
         updateUi();
+    }
+
+    public void removeDayOfWeekDrawableIconBottom() {
+        this.dayOfWeekDrawableIconBottom = new HashMap<>();
+        adapter.setDayOfWeekDrawableIconBottom(dayOfWeekDrawableIconBottom);
+//        updateUi();
+        commit(state);
     }
 
     public void setDayOfWeekDrawableIconBottom(Map<DayOfWeek, Drawable> dayOfWeekDrawableIconBottom) {
