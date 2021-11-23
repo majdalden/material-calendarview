@@ -28,11 +28,11 @@ task clean(type: Delete) {
 
 apply from: rootProject.file('dependencies.gradle')
 
-task copyTask(type: Copy) {
-  def fileD = '/Users/majdalden/Documents/MyAndroidProjects/Miran/material-calendarview-2.0.1/material-calendarview-2.0.1.aar'
-  if (file(fileD).exists())
-    delete(fileD)
+// task copyTask(type: Copy) {
+//   def fileD = '/Users/majdalden/Documents/MyAndroidProjects/Miran/material-calendarview-2.0.1/material-calendarview-2.0.1.aar'
+//   if (file(fileD).exists())
+//     delete(fileD)
 
-  from '/Users/majdalden/Documents/MyAndroidProjects/material-calendarview/library/build/outputs/aar/material-calendarview-2.0.1.aar'
-  into '/Users/majdalden/Documents/MyAndroidProjects/Miran/material-calendarview-2.0.1'
-}
+//   from '/Users/majdalden/Documents/MyAndroidProjects/material-calendarview/library/build/outputs/aar/material-calendarview-2.0.1.aar'
+//   into '/Users/majdalden/Documents/MyAndroidProjects/Miran/material-calendarview-2.0.1'
+// }
